@@ -1,14 +1,13 @@
-from tkinter import Tk, Canvas
+import tkinter as tk
 
-root = Tk()
-# Initialize canvas
-canvas = Canvas(root, width=400, height=200, bg="white")
+root = tk.Tk()
+canvas = tk.Canvas(root, width=400, height=300)
 canvas.pack()
 
-# Draw a red line
-canvas.create_line(0, 0, 400, c200, fill="red")
+# Load the image
+img = tk.PhotoImage(file="dino.png")
 
-# Draw a blue rectangle
-canvas.create_rectangle(50, 50, 150, 150, fill="blue")
+# Add image to canvas (x, y coordinates)
+canvas.create_image(20, 20, anchor="nw", image=img)
 
 root.mainloop()
