@@ -1,0 +1,1 @@
+A simple version of Google Dinosaur Game using tkinter.
