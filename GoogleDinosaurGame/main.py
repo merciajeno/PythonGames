@@ -12,10 +12,15 @@ new_height = 50
 resized_img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
 
 def move_dino():
+    canvas.move(tree, -5, 0)
     canvas.move(ground1,-5,0)
     canvas.move(ground2,-5,0)
     x1 = canvas.coords(ground1)
     x2 = canvas.coords(ground2)
+    coords = canvas.coords(tree)
+
+    if coords[2]<0:
+        canvas.coords(tree, 400, ground_y - 40, 420, ground_y)
     if x1[2] < 0:
         canvas.coords(ground1, x2[2], x2[3], x2[2] + 400, x2[3])
     if x2[2] < 0:
@@ -29,6 +34,11 @@ tk_img = ImageTk.PhotoImage(resized_img)
 ground_y = 150
 ground1 = canvas.create_line(0,ground_y,400,ground_y,width=3)
 ground2 = canvas.create_line(400,ground_y,800,ground_y,width=3)
+tree = canvas.create_rectangle(
+    330, ground_y - 40,   # top-left
+    350, ground_y,        # bottom-right
+    fill="green"
+)
 # Add image to canvas (x, y coordinates)
 dino = canvas.create_image(0, ground_y-50, anchor="nw", image=tk_img)
 move_dino()
