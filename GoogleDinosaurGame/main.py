@@ -17,16 +17,24 @@ def move_dino():
     canvas.move(ground2,-5,0)
     x1 = canvas.coords(ground1)
     x2 = canvas.coords(ground2)
-    coords = canvas.coords(tree)
 
+    dino_box= canvas.bbox(dino)
+    coords = canvas.coords(tree)
+    dx1, dy1, dx2, dy2 = dino_box #dinosaur coordinates
+    tx1, ty1, tx2, ty2 = coords #tree coordinates
+
+    if tx1<dx2 and dy1 < ty2 and dy2 > ty1 and dx1<tx2:
+        print("Collision!")
+        return
+    
     if coords[2]<0:
         canvas.coords(tree, 400, ground_y - 40, 420, ground_y)
     if x1[2] < 0:
         canvas.coords(ground1, x2[2], x2[3], x2[2] + 400, x2[3])
     if x2[2] < 0:
         canvas.coords(ground2, x1[2], x1[3], x1[2] + 400, x1[3])
-    print(x1)
-    print(x2)
+    # print(x1)
+    # print(x2)
     canvas.after(30,move_dino)
 
 #  Convert to Tkinter-compatible photo
