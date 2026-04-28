@@ -1,1 +1,1 @@
-A simple version of Google Dinosaur Game using tkinter.
+A simple version of Google Dinosaur Game built using tkinter. It has infinite road and lot of obstacles too.
